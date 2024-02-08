@@ -1,0 +1,98 @@
+/* Footer.css */
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ebeeef;
+    color: #002f34;
+    padding: 20px;
+  }
+  
+  .footer-section {
+    max-width: 150px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-left: -32px;
+
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  .social-media-icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+  }
+  
+  .social-media-icons li {
+    font-size: 20px;
+  }
+  
+  .social-media-icons a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .social-media-icons a:hover {
+    text-decoration: underline;
+  }
+  .app-download-icons {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .app-download-icons li {
+    font-size: 30px;
+  }
+  
+  .app-download-icons a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .app-download-icons a:hover {
+    text-decoration: underline;
+  }
+  ul li{
+    cursor: pointer;
+    color: #002f34;
+  }
+  ul li:hover{
+    
+    color: darkblue;
+  }
+  .LastFooter{
+    background-color: #002f34;
+    color: #fff;
+  }
+  .LastFooter p{
+    text-align :right;
+    margin-right: 50px;
+  }
+  .app-download-icons{
+    display: flex;
+  }
+  .app-download-icons li{
+    margin: 6px;
+  }
+  @media (max-width: 768px ) {
+    .social-media-icons{
+      display: flow-root;
+    }
+    .social-media-icons li{
+      text-align: center;
+      
+    }
+    .app-download-icons li{
+      text-align: center;
+    }
+  }
+  @media (max-width: 425px) {
+    .our{
+      margin-left: -40px
+    }
+  }

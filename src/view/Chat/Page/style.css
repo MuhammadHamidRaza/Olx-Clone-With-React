@@ -1,0 +1,14 @@
+.chat-box{
+    border: 2px solid black;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.text{
+    display: flex;
+}
+.text-me{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 3%;
+}

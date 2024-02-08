@@ -1,0 +1,62 @@
+
+
+.Cards{
+  width: 538px !important;
+  box-shadow: 4px 4px 4px 4px;
+  height: 500px;
+  /* style.css */
+
+  position: relative !important;
+
+
+}
+.sld{
+  width: 300 ; 
+  margin-left:105 
+}
+.carousel-control-next-icon{
+  background-color: black;
+
+}
+
+.carousel-control-prev-icon {
+  background-color: black;
+
+}
+.carousel-indicators{
+  background-color: black;
+}
+@media (max-width: 768px) {
+  .sld{
+    width: 100vw;
+
+  }
+  
+  .Cards{
+    width: 100vw !important;
+  }
+
+}
+@media (max-width: 425px) {
+  .sld{
+    width: 100vw;
+
+  }
+  
+  
+  .Cards{
+    width: 100vw !important;
+  }
+
+}@media (max-width: 320px) {
+  .sld{
+    width: 99vw;
+
+  }
+  
+  
+  .Cards{
+    width: 99vw !important;
+  }
+
+}

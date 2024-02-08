@@ -1,0 +1,50 @@
+
+
+    .Body{
+        background-color: #222831 !important;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+    }
+    
+
+
+.cont {
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(238, 226, 0);
+    border-radius: 5px;
+    margin-top: 123px;
+        margin-left: 20%;
+    padding: 20px;
+    width: 62%;
+    background-color: #000000;
+    color: white;
+  }
+  
+.cont h3 {
+    text-align: center;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black; 
+}
+  
+.cont span input {
+    border-radius: 2px;
+    display: block;
+    width: 98%;
+    height: 25px ;
+}
+.cont span button {
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.href{
+  text-align: center;
+}

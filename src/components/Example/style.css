@@ -1,0 +1,10 @@
+.size {
+    width: 100%;
+    height: 500px
+}
+@media (max-width:768) {
+    .size{
+        width: 90%;
+
+    }
+}

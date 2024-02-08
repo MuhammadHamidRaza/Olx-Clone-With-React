@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.Nav1 ul {
+    display: flex;
+}
+
+.address {
+    border: 1px solid black;
+    height: 100px;
+}
+
+.cart {
+    align-items: center;
+    position: absolute;
+    top: 101%;
+    left: 10%;
+    background: black;
+    color: white;
+    height: auto;
+    width: 78vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+
+}
+
+.name {
+    font-size: 1rem;
+    display: inline;
+}
+
+.Nav1 ul li {
+    list-style: none;
+    margin: 15px;
+}
+
+.sell-btn-div {
+    margin-top: -9px;
+    width: 105px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+
+    background-image: url(./sell-btn-border.svg);
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+.nam {
+    margin-top: 36px;
+}
+
+.pak {
+    height: 100%;
+    margin-left: 3px;
+    border: none;
+    z-index: -1;
+    position: relative;
+}
+
+
+.sell-txt {
+    color: #002f34;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.Nav1 ul li:hover {
+
+    color: blue;
+    cursor: pointer;
+}
+
+.Nav2 ul {
+    display: flex;
+}
+
+.Nav2 ul li {
+    list-style: none;
+    margin: 30px;
+    height: 40px;
+}
+
+.svg-inline--fa {
+    margin-left: 3px;
+}
+
+.searchIcon {
+    padding-top: 11px;
+    width: 23px;
+    background: black;
+    color: white;
+    height: 103%;
+    display: inline-flex;
+}
+
+.login {
+    background: none;
+    border: none;
+}
+
+
+
+.Navbar {
+    width: 100%;
+    background-color: #f7f8f8;
+    position: fixed;
+    box-shadow: 0px 0px 4px 0px;
+}
+
+.input {
+    width: 330px;
+    height: 100%
+}
+
+@media (max-width: 1024px) {
+    .searchIcon {
+        width: 23px;
+        background: black;
+        color: white;
+        height: 103%;
+        display: inline-flex;
+        padding-top: 6px;
+    }
+
+    .Nav2 ul li {
+        list-style: none;
+        margin: 24px;
+        height: 30px;
+    }
+
+    .pak {
+        width: 89px;
+    }
+
+    .Sell {
+        margin-left: -20px;
+    }
+
+    .input {
+        width: 268px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Nav2 ul li {
+        list-style: none;
+        margin: 12px;
+        height: 30px;
+    }
+
+    .address {
+        display: none;
+    }
+
+    .input {
+        width: 283px;
+    }
+
+    .Nav2 {
+        margin-left: -26px;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .Nav2 ul li {
+        list-style: none;
+        margin: 22px;
+        height: 30px;
+    }
+
+    .address {
+        display: block;
+        margin-left: -31px !important;
+    }
+
+    .name {
+        margin-left: -251px;
+    }
+
+
+    .pak {
+        width: 255px;
+    }
+
+    .Nav2 {
+        margin-left: -40px;
+    }
+
+    .input-find {
+        display: none
+    }
+
+    .footer-container {
+        display: grid !important;
+    }
+
+    .login {
+        margin-left: -94px;
+    }
+
+    .Sell {
+        margin-left: -242%;
+        margin-top: 500%;
+    }
+}
+
+@media (max-width: 375px) {
+
+    .Sell {
+        margin-left: -269%;
+        margin-top: 435%;
+    }
+
+    .name {
+        margin-left: -260px;
+    }
+}
+
+@media (max-width: 320px) {
+    .pak {
+        width: 198px;
+    }
+
+    .name {
+
+        margin-left: -223px;
+    }
+
+    .Sell {
+        margin-left: -237%;
+        margin-top: 435%;
+    }
+}

@@ -1,0 +1,8 @@
+.map{
+    position: absolute;
+    width: 414px !important;
+    height: 40% !important;
+    z-index: -1;
+    margin-top: 58px;
+    box-shadow: 1px 1px 1px 1px;
+}
