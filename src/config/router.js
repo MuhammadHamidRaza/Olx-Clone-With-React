@@ -10,6 +10,9 @@ import Signup from '../view/Dashboard/Signup'
 import Sell from "../view/Dashboard/Sell";
 import Myadd from "../view/Dashboard/Myadd";
 import Chating from "../view/Chat";
+import Category from "../view/Category";
+
+import Forget from "../view/Dashboard/Forget";
 
 
 const router = createBrowserRouter([
@@ -31,6 +34,10 @@ const router = createBrowserRouter([
         element: <Signup />
       },
       {
+        path: "/forget",
+        element: <Forget />
+      },
+      {
         path:"/dashboard/sell",
         element:<Sell/>
       },{
@@ -39,6 +46,9 @@ const router = createBrowserRouter([
       },{
         path:"/chat/:adId",
         element:<Chating/>
+      },{
+        path:"/category/:name",
+        element:<Category/>
       }
     
     ]

@@ -5,7 +5,7 @@ import {  getDoc } from "firebase/firestore";
 import { doc, setDoc,where,query,addDoc } from "firebase/firestore";
 import { getStorage, ref,uploadBytes ,getDownloadURL ,} from "firebase/storage";
 
-import { getAuth, createUserWithEmailAndPassword,signOut , signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth,sendPasswordResetEmail, createUserWithEmailAndPassword,signOut , signInWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -151,9 +151,39 @@ signOut(auth).then(() => {
   // An error happened.
 });
 }
+async function ForgetPassword(email) {
+ await sendPasswordResetEmail(auth, email[0].value)
+    .then(() => {
+      // Password reset email sent!
+      // Handle success, e.g., show a success message to the user
+      console.log("Password reset email sent successfully");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // Handle error, e.g., show an error message to the user
+      console.error("Error sending password reset email: ", errorMessage);
+    });
+    console.log(email[0].value);
+}
 
+async function category(inputValue) {
+  const adsRef = collection(db, "ads")
+  const querySnapshot = await getDocs(query(adsRef, where("category", "==", inputValue)))
+  const ads = []
+  querySnapshot.forEach((doc) => {
+      const ad = doc.data()
+      ad.id = doc.id
+
+      ads.push(ad)
+  });
+
+  return ads
+}
 
 export{
+  category,
+  ForgetPassword,
   myAdd,
   signout,
 

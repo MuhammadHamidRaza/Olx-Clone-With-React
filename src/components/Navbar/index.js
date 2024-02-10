@@ -2,7 +2,7 @@ import './style.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getUsers, signout } from '../../config/firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCar, faBuilding, faSearch, faCartShopping ,faXmark} from '@fortawesome/free-solid-svg-icons';
+import { faCar, faBuilding, faSearch, faCartShopping, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import olx from './olx.png';
@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../store/cartSlice';
+import { category } from '../../config/firebase';
 
 
 const auth = getAuth();
@@ -18,20 +19,37 @@ const auth = getAuth();
 function Navbar() {
     const [lvn, setLvn] = useState(false);
     const [name, setName] = useState(null);
-    const [iscart,setIsCart] = useState(false) 
+    const [iscart, setIsCart] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const handleSelectChange =async (e) => {
+    const handleSelectChange = async (e) => {
         const selectedValue = e.target.value;
 
         if (selectedValue === 'myAds') {
             navigate('/dashboard/myadd')
         } else if (selectedValue === 'logout') {
-           await signout() 
-           navigate('/login')
+            await signout()
+            navigate('/login')
         }
-    };
 
+        else if (selectedValue === 'bedsheet') {
+            navigate('/category/bedsheet')
+
+        }
+        else if (selectedValue === 'tv') {
+            navigate('/category/tv')
+        }
+        else if (selectedValue === 'Bike') {
+            navigate('/category/Bike')
+        }
+        else if (selectedValue === 'home') {
+            navigate('/category/home')
+        }
+        else if (selectedValue === 'car') {
+            navigate('/category/car')
+        }
+
+    };
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -57,9 +75,9 @@ function Navbar() {
             }
         });
 
-       
+
         return () => unsubscribe();
-    }, []); 
+    }, []);
 
     console.log('hello');
     const cart = useSelector(state => state.cart)
@@ -67,11 +85,11 @@ function Navbar() {
         setIsCart(true)
     }
 
-    function close(){
+    function close() {
         setIsCart(false)
     }
     function removeCart(index) {
-      dispatch(removeFromCart(index))
+        dispatch(removeFromCart(index))
 
 
     }
@@ -90,19 +108,19 @@ function Navbar() {
                         <FontAwesomeIcon icon={faBuilding} /> Property
                     </li>
                     <li>
-                    <FontAwesomeIcon onClick={showCart} icon={faCartShopping} /> {cart.length}
-                    {iscart &&<div className='cart'>
-                    <FontAwesomeIcon onClick={close} icon={faXmark} /> 
-                      {cart.map((item,index) => {
+                        <FontAwesomeIcon onClick={showCart} icon={faCartShopping} /> {cart.length}
+                        {iscart && <div className='cart'>
+                            <FontAwesomeIcon onClick={close} icon={faXmark} />
+                            {cart.map((item, index) => {
 
-                return <div>
-                    <h3>
-                        <img src={item.image[0]} width="100" height="50" /> {item.title} - Rs. {item.amount}      <Button onClick={() => removeCart(index)} style={{marginLeft:30}} variant="outline-danger">Remove</Button>{' '}
+                                return <div>
+                                    <h3>
+                                        <img src={item.image[0]} width="100" height="50" /> {item.title} - Rs. {item.amount}      <Button onClick={() => removeCart(index)} style={{ marginLeft: 30 }} variant="outline-danger">Remove</Button>{' '}
 
-                    </h3>
-                    
-                </div>
-            })}</div>}
+                                    </h3>
+
+                                </div>
+                            })}</div>}
                     </li>
                 </ul>
             </div>
@@ -123,8 +141,16 @@ function Navbar() {
                                     <option value=''><h5></h5></option>
                                     <option value='myAds'><h5>My Ads</h5></option>
                                     <option value='logout'><h5>Logout</h5></option>
+                                    <optgroup label='Category'>
+                                        <option value='Bike'><h5>Bike</h5></option>
+                                        <option value='car'><h5>car</h5></option>
+                                        <option value='home'><h5>Home</h5></option>
+                                        <option value='tv'><h5>TV</h5></option>
+                                        <option value='bedsheet'><h5>Bedsheet</h5></option>
+                                    </optgroup>
                                 </select>
                             </>
+
                         )}
                     </li>
 

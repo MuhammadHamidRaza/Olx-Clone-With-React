@@ -66,6 +66,9 @@ function Login() {
         <span>
           <p className="href">Don't have an account. <a onClick={() => navigate('/signup')}>Click here!</a></p>
         </span>
+        <span>
+          <p className="href"><a style={{textDecoration:'underline'}} onClick={() => navigate('/forget')}>Forget Password</a></p>
+        </span>
       </div>
     </div>
     </div>
