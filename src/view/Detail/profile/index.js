@@ -19,7 +19,7 @@ function Profile(props) {
   const handleAddToCartButtonClick = () => {
     dispatch(updateCart(props.product));
   };
-
+console.log(props.product.location);
   return (
     <div>
       <div className="Box-Profile">
@@ -42,7 +42,7 @@ function Profile(props) {
         <br />
         <div className='Box-2'>
           <h1 style={{ margin: 10 }}>Location</h1>
-          <p style={{ marginLeft: 20 }}>{props.product.location}</p>
+          <p style={{ marginLeft: 20 }}>{props.product.address}</p>
         </div>
       
         <Map address={props.product.location} apiKey={apiKey} />

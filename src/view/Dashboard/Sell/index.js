@@ -8,6 +8,7 @@ function Sell() {
     const [category , setCategory] = useState()
     const navigate = useNavigate();
     const [images, setImages] = useState([]);
+    const [location ,setLocation] = useState({})
 
     function onFileChange(event) {
         const selectedFiles = event.target.files;
@@ -17,7 +18,13 @@ function Sell() {
         console.log(category);
 
     },[category])
-
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((location) => {
+            const { latitude, longitude } = location.coords
+            console.log(location);
+            setLocation({ latitude, longitude })
+        })
+    }, []) 
     function onSubmit() {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -28,21 +35,24 @@ function Sell() {
                     const title = allInputs[0];
                     const description = allInputs[1];
                     const amount = allInputs[2];
-                    const location = allInputs[3]
+                    const address = allInputs[3]
 
 
                     const ad = {
                         title: title.value,
                         description: description.value,
                         amount: amount.value,
+                        address:address.value,
+
                         image:images,
-                        location:location.value,
+                        location:{latitude:location.latitude,longitude:location.longitude},
                         category,
                         uid
                     };
                   
                   await  postAdToDb(ad);
                   setImages([]);
+                  address.value = '';
                   title.value = '';
                   description.value = '';
                   amount.value = '';
@@ -71,7 +81,7 @@ function Sell() {
                 <input className='inpt' placeholder="Title" />
                 <input className='inpt' placeholder="Description" />
                 <input className='inpt' type="number" placeholder="Amount" />
-                <input className='inpt' type='text' placeholder="location" />
+                <input className='inpt' placeholder="Address" />
                 <h2 className='btns'>Category</h2>
                 <div className='btns'>
 
@@ -88,6 +98,7 @@ function Sell() {
 
 
                 <input
+                
                     className='inpt image-input'
                     type="file"
                     multiple

@@ -1,57 +1,42 @@
-// import './style.css';
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import markerIcon from './marker.png'; 
+import './style.css'
 
-// function MapComponent({location}) {
+function MapComponent  (props) {
+  const { latitude, longitude } = props.address;
+  console.log(latitude,longitude);
+  const position = [latitude, longitude]; 
+  const markers = [
+    { id: 1, position: [latitude, longitude], popupContent: 'Kharadar Police Choki' },
+  ];
 
-
-// }
-// // apiKey: 'AIzaSyAWleTAMOPAcHeWptvRkOm_D20sjkOltHI',
-
-// const mapStyle = 'https://api.maptiler.com/maps/satellite/style.json?key=&callback=initMap';
-import React, { useEffect } from 'react';
-
-const MapComponent = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `https://api.maptiler.com/maps/satellite/style.json?key=&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-
-    script.onload = () => {
-      // Initialize your map here
-      initMap();
-    };
-
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup if needed
-      document.head.removeChild(script);
-    };
-  }, []);
-  let map;
-
-async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
-
-  map = new Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+  const customIcon = new L.Icon({
+    iconUrl: markerIcon,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
   });
-}
 
-initMap();
+  return (
+    <div className='map-container'>
+    <MapContainer className='map' center={position} zoom={15}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
 
-  // Define the initMap function
-  window.initMap = () => {
-    const map = new window.google.maps.Map(document.getElementById('google-map'), {
-      center: { lat: 0, lng: 0 },
-      zoom: 2,
-    });
-
-    // Additional map configuration or markers can be added here
-  };
-
-  return <div id="google-map" style={{ width: '100%', height: '100vh' }}></div>;
+      {/* Marker with Popup */}
+      {markers.map((marker) => (
+        <Marker key={marker.id} position={marker.position} icon={customIcon}>
+          <Popup>{marker.popupContent}</Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+    </div>
+  );
 };
 
 export default MapComponent;
